@@ -9,7 +9,7 @@ import { Round } from '../game-model.service';
 })
 export class NewRoundDialogComponent implements OnInit {
 
-  private round: Round = new Round();
+  round: Round = new Round();
 
   constructor(private dialogRef: MatDialogRef<NewRoundDialogComponent>, @Inject(MAT_DIALOG_DATA) public initData: Round) {
     this.round = new Round(initData.team1effect, initData.team2effect);
