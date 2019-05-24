@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ScoreTableComponent } from './score-table/score-table.component';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { ScoreTrackerContainerComponent } from './score-tracker-container/score-tracker-container.component';
 
@@ -21,7 +21,9 @@ import { ScoreTrackerContainerComponent } from './score-tracker-container/score-
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
