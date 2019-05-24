@@ -36,7 +36,7 @@ class ScoreTableData {
 export class ScoreTableComponent implements OnInit {
 
   private scoreTableData: ScoreTableData = new ScoreTableData();
-  private dataSource: MatTableDataSource<Round> = new MatTableDataSource(this.scoreTableData.rounds);
+  dataSource: MatTableDataSource<Round> = new MatTableDataSource(this.scoreTableData.rounds);
   columnsToDisplay = ['team1col', 'team2col'];
 
   constructor() { }
