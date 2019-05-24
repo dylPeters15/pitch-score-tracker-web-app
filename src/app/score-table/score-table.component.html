@@ -9,6 +9,6 @@
     <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.team2effect}} </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="columnsToDisplay" style="background-color: grey;"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="columnsToDisplay" style="background-color: lightgrey;"></mat-header-row>
   <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
 </mat-table>
