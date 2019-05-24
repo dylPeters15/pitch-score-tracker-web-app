@@ -8,11 +8,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ScoreTableComponent } from './score-table/score-table.component';
 import { MatTableModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
+import { ScoreTrackerContainerComponent } from './score-tracker-container/score-tracker-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScoreTableComponent
+    ScoreTableComponent,
+    ScoreTrackerContainerComponent
   ],
   imports: [
     BrowserModule,
