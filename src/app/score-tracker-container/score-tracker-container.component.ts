@@ -13,8 +13,6 @@ export class ScoreTrackerContainerComponent implements OnInit {
 
   @ViewChild('appScoreTable') appScoreTable?: ScoreTableComponent;
 
-  scoreTableData: ScoreTableData = new ScoreTableData();
-
   constructor(private dialog: MatDialog) {
   }
 

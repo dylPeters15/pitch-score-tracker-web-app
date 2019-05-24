@@ -19,6 +19,8 @@ export class ScoreTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.editTeam1();
+    this.editTeam2();
     this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
     console.log(this.dataSource);
   }
