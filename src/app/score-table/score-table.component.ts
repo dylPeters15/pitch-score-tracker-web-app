@@ -27,4 +27,12 @@ export class ScoreTableComponent implements OnInit {
     }
   }
 
+  editTeam1(): void {
+    console.log("edit team 1");
+  }
+
+  editTeam2(): void {
+    console.log("edit team 2");
+  }
+
 }
