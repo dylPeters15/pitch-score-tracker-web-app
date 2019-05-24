@@ -10,7 +10,7 @@
           <input matInput placeholder="Player 1 Name" required [(ngModel)]="team.player1">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Player 2 Name" required [(ngModel)]="team.player2">
+          <input matInput placeholder="Player 2 Name" required [(ngModel)]="team.player2" (keydown.enter)="save()">
         </mat-form-field>
 
       <!-- </form> -->
