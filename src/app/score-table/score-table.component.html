@@ -1,14 +1,19 @@
-<mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="team1col">
-    <mat-header-cell *matHeaderCellDef>Team 1</mat-header-cell>
-    <mat-cell *matCellDef="let round"> {{round.team1effect}} </mat-cell>
-  </ng-container>
+<mat-card>
+  <mat-card-content>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="team1col">
+        <mat-header-cell *matHeaderCellDef>Team 1</mat-header-cell>
+        <mat-cell *matCellDef="let round"> {{round.team1effect}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="team2col">
+        <mat-header-cell *matHeaderCellDef>Team 2</mat-header-cell>
+        <mat-cell *matCellDef="let round"> {{round.team2effect}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="columnsToDisplay" style="background-color: grey;"></mat-header-row>
+      <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>
 
-  <ng-container matColumnDef="team2col">
-    <mat-header-cell *matHeaderCellDef>Team 2</mat-header-cell>
-    <mat-cell *matCellDef="let round"> {{round.team2effect}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-  <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
-</mat-table>
