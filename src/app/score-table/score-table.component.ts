@@ -16,12 +16,15 @@ export class ScoreTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.scoreTableData.rounds.push(new Round(5,-5));
-    this.scoreTableData.rounds.push(new Round(1,-3));
-    this.scoreTableData.rounds.push(new Round(2,-2));
-    this.scoreTableData.rounds.push(new Round(3,-1));
     this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
     console.log(this.dataSource);
+  }
+
+  appendRound(round: Round): void {
+    if (round && round.team1effect != undefined) {
+      this.scoreTableData.rounds.push(round);
+      this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
+    }
   }
 
 }
