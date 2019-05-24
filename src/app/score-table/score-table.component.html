@@ -1,7 +1,7 @@
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="team1col">
     <mat-header-cell *matHeaderCellDef (click)="editTeam1()">Team 1 - {{scoreTableData.team1.teamName}}: {{scoreTableData.team1.player1}} & {{scoreTableData.team1.player2}}</mat-header-cell>
-    <mat-cell *matCellDef="let round"> {{round.team1effect}} </mat-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.team1effect}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="team2col">
