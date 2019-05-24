@@ -11,13 +11,15 @@ import {MatCardModule} from '@angular/material/card';
 import { ScoreTrackerContainerComponent } from './score-tracker-container/score-tracker-container.component';
 import { NewRoundDialogComponent } from './new-round-dialog/new-round-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewTeamDialogComponent } from './new-team-dialog/new-team-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ScoreTableComponent,
     ScoreTrackerContainerComponent,
-    NewRoundDialogComponent
+    NewRoundDialogComponent,
+    NewTeamDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    NewRoundDialogComponent
+    NewRoundDialogComponent,
+    NewTeamDialogComponent
   ]
 })
 export class AppModule { }
