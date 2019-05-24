@@ -16,13 +16,23 @@ export class ScoreTableComponent implements OnInit {
   columnsToDisplay = ['team1col', 'team2col'];
 
   constructor(private dialog: MatDialog) {
+    var thisobject = this;
+    new Promise(async (resolve, reject) => {
+      await this.editTeam1();
+      await this.editTeam2();
+      thisobject.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
+      console.log(this.dataSource);
+    })
+    // var thisobject = this;
+    //  this.editTeam1().then(() => {
+    //   this.editTeam2().then(() => {
+    //     thisobject.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
+    //     console.log(this.dataSource);
+    //   });
+    //  }); 
   }
 
   ngOnInit() {
-    this.editTeam1();
-    this.editTeam2();
-    this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
-    console.log(this.dataSource);
   }
 
   appendRound(round: Round): void {
@@ -32,28 +42,26 @@ export class ScoreTableComponent implements OnInit {
     }
   }
 
-  editTeam1(): void {
+  async editTeam1(): Promise<void> {
     console.log("edit team 1");
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.scoreTableData.team1;
-    this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
-      if (closeData) {
-        this.scoreTableData.team1 = closeData;
-        console.log(closeData);
-      }
-    });
+    var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
+    if (closeData) {
+      this.scoreTableData.team1 = closeData;
+      console.log(closeData);
+    }
   }
 
-  editTeam2(): void {
+  async editTeam2(): Promise<void> {
     console.log("edit team 2");
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.scoreTableData.team2;
-    this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
-      if (closeData) {
-        this.scoreTableData.team2 = closeData;
-        console.log(closeData);
-      }
-    });
+    var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
+    if (closeData) {
+      this.scoreTableData.team2 = closeData;
+      console.log(closeData);
+    }
   }
 
   editRound(round: Round): void {
