@@ -86,8 +86,6 @@ THE SOFTWARE.
 
 @angular/material/dialog
 
-@angular/material/icon
-
 @angular/material/table
 
 @angular/platform-browser
