@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { NewRoundDialogComponent } from '../new-round-dialog/new-round-dialog.component';
-import { ScoreTableData } from '../game-model.service';
 import { ScoreTableComponent } from '../score-table/score-table.component';
 
 @Component({
