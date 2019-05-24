@@ -6,7 +6,7 @@
 
   <ng-container matColumnDef="team2col">
     <mat-header-cell *matHeaderCellDef (click)="editTeam2()">Team 2 - {{scoreTableData.team2.teamName}}: {{scoreTableData.team2.player1}} & {{scoreTableData.team2.player2}}</mat-header-cell>
-    <mat-cell *matCellDef="let round"> {{round.team2effect}} </mat-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.team2effect}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="columnsToDisplay" style="background-color: grey;"></mat-header-row>
