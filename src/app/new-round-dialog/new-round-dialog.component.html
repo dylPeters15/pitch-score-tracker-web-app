@@ -1,3 +1,20 @@
-<p>
-  new-round-dialog works!
-</p>
+<h2 mat-dialog-title align="center">New Round</h2>
+<mat-dialog-content align="center">
+  <mat-card>
+    <mat-card-content style="display: grid; width: 100%; justify-items: center;">
+      <!-- <form [formGroup]="form"> -->
+        <mat-form-field>
+          <input matInput placeholder="Team 1 Points" required [(ngModel)]="round.team1effect">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Team 2 Points" required [(ngModel)]="round.team2effect">
+        </mat-form-field>
+
+      <!-- </form> -->
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button (click)="save()" color="primary">Save</button>
+</mat-dialog-actions>
