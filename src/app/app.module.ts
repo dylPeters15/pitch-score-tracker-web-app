@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ScoreTableComponent } from './score-table/score-table.component';
-import { MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatTableModule, MatIconModule, MatButtonModule, MatDialogModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { ScoreTrackerContainerComponent } from './score-tracker-container/score-tracker-container.component';
 import { NewRoundDialogComponent } from './new-round-dialog/new-round-dialog.component';
@@ -25,7 +25,8 @@ import { NewRoundDialogComponent } from './new-round-dialog/new-round-dialog.com
     MatTableModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
