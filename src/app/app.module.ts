@@ -6,22 +6,31 @@ import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ScoreTableComponent } from './score-table/score-table.component';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
+import { ScoreTrackerContainerComponent } from './score-tracker-container/score-tracker-container.component';
+import { NewRoundDialogComponent } from './new-round-dialog/new-round-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScoreTableComponent
+    ScoreTableComponent,
+    ScoreTrackerContainerComponent,
+    NewRoundDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NewRoundDialogComponent
+  ]
 })
 export class AppModule { }
