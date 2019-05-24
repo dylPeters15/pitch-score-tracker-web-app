@@ -1,32 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
-
-class Round {
-  team1effect: number = 0;
-  team2effect: number = 0;
-  constructor(team1effect: number, team2effect: number) {
-    this.team1effect = team1effect;
-    this.team2effect = team2effect;
-  }
-}
-
-class ScoreTableData {
-  rounds: Round[] = [];
-  getTeam1Score(): number {
-    var team1score: number = 0;
-    for (let round of this.rounds) {
-      team1score += round.team1effect;
-    }
-    return team1score;
-  }
-  getTeam2Score(): number {
-    var team2score: number = 0;
-    for (let round of this.rounds) {
-      team2score += round.team2effect;
-    }
-    return team2score;
-  }
-}
+import { ScoreTableData, Round } from '../game-model.service';
 
 @Component({
   selector: 'app-score-table',
@@ -42,12 +16,15 @@ export class ScoreTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.scoreTableData.rounds.push(new Round(5,-5));
-    this.scoreTableData.rounds.push(new Round(1,-3));
-    this.scoreTableData.rounds.push(new Round(2,-2));
-    this.scoreTableData.rounds.push(new Round(3,-1));
     this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
     console.log(this.dataSource);
+  }
+
+  appendRound(round: Round): void {
+    if (round && round.team1effect != undefined) {
+      this.scoreTableData.rounds.push(round);
+      this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
+    }
   }
 
 }
