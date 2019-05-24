@@ -15,7 +15,8 @@ export class ScoreTableComponent implements OnInit {
   dataSource: MatTableDataSource<Round> = new MatTableDataSource(this.scoreTableData.rounds);
   columnsToDisplay = ['team1col', 'team2col'];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
@@ -67,5 +68,7 @@ export class ScoreTableComponent implements OnInit {
     });
     console.log(round);
   }
+
+  
 
 }

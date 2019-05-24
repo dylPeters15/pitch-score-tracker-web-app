@@ -4,10 +4,10 @@
     <mat-card-content style="display: grid; width: 100%; justify-items: center;">
       <!-- <form [formGroup]="form"> -->
         <mat-form-field>
-          <input matInput placeholder="Team 1 Points" required [(ngModel)]="round.team1effect" type="number">
+          <input matInput placeholder="Team 1 Points" required [(ngModel)]="round.team1effect" type="number" name="quantity">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Team 2 Points" required [(ngModel)]="round.team2effect" type="number" (keydown.enter)="save()">
+          <input matInput placeholder="Team 2 Points" required [(ngModel)]="round.team2effect" type="number" name="quantity" (keydown.enter)="save()">
         </mat-form-field>
 
       <!-- </form> -->
