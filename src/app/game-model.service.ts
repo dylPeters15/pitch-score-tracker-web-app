@@ -13,6 +13,11 @@ export class Team {
   teamName: string = "";
   player1: string = "";
   player2: string = "";
+  constructor(teamName?: string, player1?: string, player2?: string) {
+    this.teamName = teamName || "";
+    this.player1 = player1 || "";
+    this.player2 = player2 || "";
+  }
 }
 
 export class ScoreTableData {
