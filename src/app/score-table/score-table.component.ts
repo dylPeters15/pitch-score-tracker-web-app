@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {MatTableDataSource, MatDialog, MatDialogConfig} from '@angular/material';
-import { ScoreTableData, Round } from '../game-model.service';
+import { Round, PitchGameModel } from '../game-model.service';
 import { NewTeamDialogComponent } from '../new-team-dialog/new-team-dialog.component';
 import { NewRoundDialogComponent } from '../new-round-dialog/new-round-dialog.component';
 
@@ -11,17 +11,17 @@ import { NewRoundDialogComponent } from '../new-round-dialog/new-round-dialog.co
 })
 export class ScoreTableComponent implements OnInit {
 
-  private scoreTableData: ScoreTableData = new ScoreTableData();
-  dataSource: MatTableDataSource<Round> = new MatTableDataSource(this.scoreTableData.rounds);
+  @Input() pitchGameModel: PitchGameModel = new PitchGameModel();
+  dataSource: MatTableDataSource<Round> = new MatTableDataSource(this.pitchGameModel.rounds);
   columnsToDisplay = ['team1col', 'team2col'];
 
   constructor(private dialog: MatDialog) {
     var thisobject = this;
     new Promise(async (resolve, reject) => {
+      console.log("Pitch game model: ", this.pitchGameModel);
       await this.editTeam1();
       await this.editTeam2();
-      thisobject.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
-      console.log(this.dataSource);
+      thisobject.refreshData();
     })
     // var thisobject = this;
     //  this.editTeam1().then(() => {
@@ -35,20 +35,24 @@ export class ScoreTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  refreshData(): void {
+    this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
+  }
+
   appendRound(round: Round): void {
     if (round && round.team1effect != undefined) {
-      this.scoreTableData.rounds.push(round);
-      this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
+      this.pitchGameModel.rounds.push(round);
+      this.refreshData();
     }
   }
 
   async editTeam1(): Promise<void> {
     console.log("edit team 1");
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.scoreTableData.team1;
+    dialogConfig.data = this.pitchGameModel.team1;
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
-      this.scoreTableData.team1 = closeData;
+      this.pitchGameModel.team1 = closeData;
       console.log(closeData);
     }
   }
@@ -56,10 +60,10 @@ export class ScoreTableComponent implements OnInit {
   async editTeam2(): Promise<void> {
     console.log("edit team 2");
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.scoreTableData.team2;
+    dialogConfig.data = this.pitchGameModel.team2;
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
-      this.scoreTableData.team2 = closeData;
+      this.pitchGameModel.team2 = closeData;
       console.log(closeData);
     }
   }
@@ -69,11 +73,11 @@ export class ScoreTableComponent implements OnInit {
     dialogConfig.data = round;
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
       if (closeData) {
-        console.log(this.scoreTableData.rounds);
-        this.scoreTableData.rounds.splice(this.scoreTableData.rounds.indexOf(round), 1, closeData);
-        console.log(this.scoreTableData.rounds);
+        console.log(this.pitchGameModel.rounds);
+        this.pitchGameModel.rounds.splice(this.pitchGameModel.rounds.indexOf(round), 1, closeData);
+        console.log(this.pitchGameModel.rounds);
         console.log(closeData);
-        this.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
+        this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
       }
     });
     console.log(round);

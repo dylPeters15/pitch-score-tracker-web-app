@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-
 export class Round {
+  bettor: string = "";
+  betAmount: number = 0;
   team1effect: number = 0;
   team2effect: number = 0;
-  constructor(team1effect?: number, team2effect?: number) {
+  constructor(team1effect?: number, team2effect?: number, bettor?: string, betAmount?: number) {
+    this.bettor = bettor || "";
+    this.betAmount = betAmount || 0;
     this.team1effect = team1effect || 0;
     this.team2effect = team2effect || 0;
   }
@@ -20,7 +22,7 @@ export class Team {
   }
 }
 
-export class ScoreTableData {
+export class PitchGameModel {
   team1: Team = new Team();
   team2: Team = new Team();
   rounds: Round[] = [];
@@ -40,10 +42,10 @@ export class ScoreTableData {
   }
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class GameModelService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class GameModelService {
 
-  constructor() { }
-}
+//   constructor() { }
+// }
