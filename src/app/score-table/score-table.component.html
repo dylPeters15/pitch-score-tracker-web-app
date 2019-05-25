@@ -4,6 +4,16 @@
     <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.team1effect}} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="bidder">
+    <mat-header-cell *matHeaderCellDef>Bidder</mat-header-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.bidder}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="bidAmount">
+    <mat-header-cell *matHeaderCellDef>Bid Amount</mat-header-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.bidAmount}} </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="team2col">
     <mat-header-cell *matHeaderCellDef (click)="editTeam2()">Team 2 - {{pitchGameModel.team2.teamName}}: {{pitchGameModel.team2.player1}} & {{pitchGameModel.team2.player2}}</mat-header-cell>
     <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.team2effect}} </mat-cell>

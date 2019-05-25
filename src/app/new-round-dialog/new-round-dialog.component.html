@@ -4,6 +4,12 @@
     <mat-card-content style="display: grid; width: 100%; justify-items: center;">
       <!-- <form [formGroup]="form"> -->
         <mat-form-field>
+          <input matInput placeholder="Bidder" required [(ngModel)]="round.bidder">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Bid Amount" required [(ngModel)]="round.bidAmount" type="number" name="quantity">
+        </mat-form-field>
+        <mat-form-field>
           <input matInput placeholder="Team 1 Points" required [(ngModel)]="round.team1effect" type="number" name="quantity">
         </mat-form-field>
         <mat-form-field>
