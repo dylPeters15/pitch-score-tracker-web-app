@@ -1,0 +1,31 @@
+<mat-form-field>
+  <mat-icon matPrefix (click)="points=points-1;" *ngIf="points>-10">exposure_minus_1</mat-icon>
+  <mat-icon matPrefix *ngIf="points<=-10" style="color: gray;">exposure_plus_1</mat-icon> <input matInput
+    placeholder={{label}} [(ngModel)]="points" [disabled]="true" style="text-align: center; color: black;">
+  <mat-icon matSuffix (click)="points=points+1;" *ngIf="points<10">exposure_plus_1</mat-icon>
+  <mat-icon matSuffix *ngIf="points>=10" style="color: gray;">exposure_plus_1</mat-icon>
+</mat-form-field>
+
+<!-- <mat-chip-list>
+  <mat-chip>-10</mat-chip>
+  <mat-chip>-9</mat-chip>
+  <mat-chip>-8</mat-chip>
+  <mat-chip>-7</mat-chip>
+  <mat-chip>-6</mat-chip>
+  <mat-chip>-5</mat-chip>
+  <mat-chip>-4</mat-chip>
+  <mat-chip>-3</mat-chip>
+  <mat-chip>-2</mat-chip>
+  <mat-chip>-1</mat-chip>
+  <mat-chip>0</mat-chip>
+  <mat-chip>1</mat-chip>
+  <mat-chip>2</mat-chip>
+  <mat-chip>3</mat-chip>
+  <mat-chip>4</mat-chip>
+  <mat-chip>5</mat-chip>
+  <mat-chip>6</mat-chip>
+  <mat-chip>7</mat-chip>
+  <mat-chip>8</mat-chip>
+  <mat-chip>9</mat-chip>
+  <mat-chip>10</mat-chip>
+</mat-chip-list> -->

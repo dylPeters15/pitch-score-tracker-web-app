@@ -3,12 +3,16 @@
   <mat-card>
     <mat-card-content style="display: grid; width: 100%; justify-items: center;">
       <!-- <form [formGroup]="form"> -->
-        <mat-form-field>
-          <input matInput placeholder="Team 1 Points" required [(ngModel)]="round.team1effect" type="number" name="quantity">
+        <!-- <mat-form-field>
+            <mat-icon matPrefix (click)="round.team1effect=round.team1effect-1;">exposure_minus_1</mat-icon>
+          <input matInput placeholder="Team 1 Points" required [(ngModel)]="round.team1effect" [disabled]="true" style="text-align: center; color: black;">
+          <mat-icon matSuffix (click)="round.team1effect=round.team1effect+1;">exposure_plus_1</mat-icon>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Team 2 Points" required [(ngModel)]="round.team2effect" type="number" name="quantity" (keydown.enter)="save()">
-        </mat-form-field>
+        </mat-form-field> -->
+
+        <app-point-selector></app-point-selector>
 
       <!-- </form> -->
     </mat-card-content>

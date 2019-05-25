@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ScoreTableComponent } from './score-table/score-table.component';
-import { MatTableModule, MatIconModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatIconModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatChipsModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { ScoreTrackerContainerComponent } from './score-tracker-container/score-tracker-container.component';
 import { NewRoundDialogComponent } from './new-round-dialog/new-round-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewTeamDialogComponent } from './new-team-dialog/new-team-dialog.component';
+import { PointSelectorComponent } from './point-selector/point-selector.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NewTeamDialogComponent } from './new-team-dialog/new-team-dialog.compon
     ScoreTableComponent,
     ScoreTrackerContainerComponent,
     NewRoundDialogComponent,
-    NewTeamDialogComponent
+    NewTeamDialogComponent,
+    PointSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { NewTeamDialogComponent } from './new-team-dialog/new-team-dialog.compon
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
