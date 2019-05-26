@@ -7,6 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class BidderSelectorComponent implements OnInit {
 
+  @Input() initialSelected: string = "";
+
   @Input() players: string[] = [];
   @Output('bidder') bidder: EventEmitter<string> = new EventEmitter();
   selected: string = "";
@@ -14,6 +16,7 @@ export class BidderSelectorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.selected = this.initialSelected;
   }
 
   emit(player: string) {

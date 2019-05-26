@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {MatTableDataSource, MatDialog, MatDialogConfig} from '@angular/material';
 import { Round, PitchGameModel } from '../game-model.service';
 import { NewTeamDialogComponent } from '../new-team-dialog/new-team-dialog.component';
-import { NewRoundDialogComponent } from '../new-round-dialog/new-round-dialog.component';
+import { NewRoundDialogComponent, NewRoundDialogCompnentInitData } from '../new-round-dialog/new-round-dialog.component';
 
 @Component({
   selector: 'app-score-table',
@@ -58,7 +58,7 @@ export class ScoreTableComponent implements OnInit {
 
   editRound(round: Round): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = round;
+    dialogConfig.data = new NewRoundDialogCompnentInitData(this.pitchGameModel, this.pitchGameModel.rounds.indexOf(round));
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
       this.refreshData();
     });
