@@ -67,4 +67,11 @@ export class NewRoundDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  delete(): void {
+    if (this.validRoundNum()) {
+      this.initData.pitchGameModel.rounds.splice(this.initData.roundNumToEdit, 1);
+      this.dialogRef.close();
+    }
+  }
+
 }

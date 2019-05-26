@@ -11,6 +11,7 @@
 
 </mat-dialog-content>
 <mat-dialog-actions align="center">
+  <button mat-raised-button (click)="delete()" color="warn" *ngIf="validRoundNum();">Delete</button>
   <button mat-raised-button (click)="cancel()">Cancel</button>
   <button mat-raised-button (click)="save()" color="primary" [disabled]="!round.bidder">Save</button>
 </mat-dialog-actions>
