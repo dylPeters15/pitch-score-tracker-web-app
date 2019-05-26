@@ -65,4 +65,26 @@ export class ScoreTableComponent implements OnInit {
     console.log(round);
   }
 
+  team1TotalThroughRound(round: Round): number {
+    var sum = 0;
+    for (let currentRound of this.pitchGameModel.rounds) {
+      sum += currentRound.team1effect;
+      if (currentRound == round) {
+        return sum;
+      }
+    }
+    return sum;
+  }
+
+  team2TotalThroughRound(round: Round): number {
+    var sum = 0;
+    for (let currentRound of this.pitchGameModel.rounds) {
+      sum += currentRound.team2effect;
+      if (currentRound == round) {
+        return sum;
+      }
+    }
+    return sum;
+  }
+
 }
