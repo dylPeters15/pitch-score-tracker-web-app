@@ -19,8 +19,8 @@ export class ScoreTableComponent implements OnInit {
     var thisobject = this;
     new Promise(async (resolve, reject) => {
       console.log("Pitch game model: ", this.pitchGameModel);
-      await this.editTeam1();
-      await this.editTeam2();
+      await this.editTeam1(true);
+      await this.editTeam2(true);
       thisobject.refreshData();
     })
   }
@@ -32,10 +32,11 @@ export class ScoreTableComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
   }
 
-  async editTeam1(): Promise<void> {
+  async editTeam1(disableClose?: boolean): Promise<void> {
     console.log("edit team 1");
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team1;
+    dialogConfig.disableClose = disableClose;
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team1 = closeData;
@@ -43,10 +44,11 @@ export class ScoreTableComponent implements OnInit {
     }
   }
 
-  async editTeam2(): Promise<void> {
+  async editTeam2(disableClose?: boolean): Promise<void> {
     console.log("edit team 2");
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team2;
+    dialogConfig.disableClose = disableClose;
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team2 = closeData;
