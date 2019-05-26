@@ -44,6 +44,7 @@ export class ScoreTableComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team1;
     dialogConfig.disableClose = disableClose;
+    dialogConfig.width = "90%";
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team1 = closeData;
@@ -56,6 +57,7 @@ export class ScoreTableComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team2;
     dialogConfig.disableClose = disableClose;
+    dialogConfig.width = "90%";
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team2 = closeData;
@@ -67,6 +69,7 @@ export class ScoreTableComponent implements OnInit {
     console.log(this.pitchGameModel.rounds.indexOf(round));
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = new NewRoundDialogCompnentInitData(this.pitchGameModel, this.pitchGameModel.rounds.indexOf(round));
+    dialogConfig.width = "90%";
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
       this.refreshData();
     });
