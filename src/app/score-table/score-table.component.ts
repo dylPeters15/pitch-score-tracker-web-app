@@ -13,7 +13,7 @@ export class ScoreTableComponent implements OnInit {
 
   @Input() pitchGameModel: PitchGameModel = new PitchGameModel();
   dataSource: MatTableDataSource<Round> = new MatTableDataSource(this.pitchGameModel.rounds);
-  columnsToDisplay = ['team1col', 'team2col'];
+  columnsToDisplay = ['team1col', 'bidder', 'bidAmount', 'team2col'];
 
   constructor(private dialog: MatDialog) {
     var thisobject = this;

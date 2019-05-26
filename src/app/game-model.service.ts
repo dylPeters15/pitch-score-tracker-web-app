@@ -1,11 +1,11 @@
 export class Round {
-  bettor: string = "";
-  betAmount: number = 0;
+  bidder: string = "";
+  bidAmount: number = 0;
   team1effect: number = 0;
   team2effect: number = 0;
-  constructor(team1effect?: number, team2effect?: number, bettor?: string, betAmount?: number) {
-    this.bettor = bettor || "";
-    this.betAmount = betAmount || 0;
+  constructor(team1effect?: number, team2effect?: number, bidder?: string, bidAmount?: number) {
+    this.bidder = bidder || "";
+    this.bidAmount = bidAmount || 0;
     this.team1effect = team1effect || 0;
     this.team2effect = team2effect || 0;
   }

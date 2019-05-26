@@ -12,7 +12,7 @@ export class NewRoundDialogComponent implements OnInit {
   round: Round = new Round();
 
   constructor(private dialogRef: MatDialogRef<NewRoundDialogComponent>, @Inject(MAT_DIALOG_DATA) public initData: Round) {
-    this.round = new Round(initData.team1effect, initData.team2effect);
+    this.round = new Round(initData.team1effect, initData.team2effect, initData.bidder, initData.bidAmount);
   }
 
   ngOnInit() {
