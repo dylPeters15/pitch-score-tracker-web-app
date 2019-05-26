@@ -25,6 +25,7 @@ export class ScoreTrackerContainerComponent implements OnInit {
     console.log(this.pitchGameModel);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {};
+    dialogConfig.width = "90%";
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
       if (closeData) {
         this.pitchGameModel.rounds.push(closeData);
