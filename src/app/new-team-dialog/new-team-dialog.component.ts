@@ -10,9 +10,13 @@ import { Team } from '../game-model.service';
 export class NewTeamDialogComponent implements OnInit {
 
   team: Team = new Team();
+  title: string = "New Team"
 
   constructor(private dialogRef: MatDialogRef<NewTeamDialogComponent>, @Inject(MAT_DIALOG_DATA) public initData: Team) {
     this.team = new Team(initData.teamName, initData.player1, initData.player2);
+    if (initData.teamName && initData.player1 && initData.player2) {
+      this.title = "Edit Team";
+    }
   }
 
   ngOnInit() {
