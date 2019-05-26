@@ -87,4 +87,8 @@ export class ScoreTableComponent implements OnInit {
     return sum;
   }
 
+  set(round: Round): boolean {
+    return round.team1effect < 0 || round.team2effect < 0;
+  }
+
 }
