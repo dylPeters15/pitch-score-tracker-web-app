@@ -12,7 +12,7 @@
           <input matInput placeholder="Team 2 Points" required [(ngModel)]="round.team2effect" type="number" name="quantity" (keydown.enter)="save()">
         </mat-form-field> -->
 
-        <app-point-selector [min]="-10" [max]=10 [label]="'Team 1 Points'" [(points)]="round.team1effect"></app-point-selector>
+        <app-point-selector #slider [min]="-10" [max]=10 [label]="'Team 1 Points'" [points]="round.team1effect" (points)="round.team1effect=$event"></app-point-selector>
         <app-point-selector [min]="-10" [max]=10 [label]="'Team 2 Points'" [(points)]="round.team2effect"></app-point-selector>
 
       <!-- </form> -->
