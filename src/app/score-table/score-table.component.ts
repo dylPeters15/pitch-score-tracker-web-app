@@ -19,17 +19,10 @@ export class ScoreTableComponent implements OnInit {
     var thisobject = this;
     new Promise(async (resolve, reject) => {
       console.log("Pitch game model: ", this.pitchGameModel);
-      await this.editTeam1();
-      await this.editTeam2();
+      await this.editTeam1(true);
+      await this.editTeam2(true);
       thisobject.refreshData();
     })
-    // var thisobject = this;
-    //  this.editTeam1().then(() => {
-    //   this.editTeam2().then(() => {
-    //     thisobject.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
-    //     console.log(this.dataSource);
-    //   });
-    //  }); 
   }
 
   ngOnInit() {
@@ -39,17 +32,11 @@ export class ScoreTableComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
   }
 
-  appendRound(round: Round): void {
-    if (round && round.team1effect != undefined) {
-      this.pitchGameModel.rounds.push(round);
-      this.refreshData();
-    }
-  }
-
-  async editTeam1(): Promise<void> {
+  async editTeam1(disableClose?: boolean): Promise<void> {
     console.log("edit team 1");
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team1;
+    dialogConfig.disableClose = disableClose;
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team1 = closeData;
@@ -57,10 +44,11 @@ export class ScoreTableComponent implements OnInit {
     }
   }
 
-  async editTeam2(): Promise<void> {
+  async editTeam2(disableClose?: boolean): Promise<void> {
     console.log("edit team 2");
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team2;
+    dialogConfig.disableClose = disableClose;
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team2 = closeData;
@@ -72,17 +60,9 @@ export class ScoreTableComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = round;
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
-      if (closeData) {
-        console.log(this.pitchGameModel.rounds);
-        this.pitchGameModel.rounds.splice(this.pitchGameModel.rounds.indexOf(round), 1, closeData);
-        console.log(this.pitchGameModel.rounds);
-        console.log(closeData);
-        this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
-      }
+      this.refreshData();
     });
     console.log(round);
   }
-
-  
 
 }

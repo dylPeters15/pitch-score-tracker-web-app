@@ -18,6 +18,6 @@
   </mat-card> -->
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <button mat-raised-button (click)="cancel()">Cancel</button>
-  <button mat-raised-button (click)="save()" color="primary">Save</button>
+  <button mat-raised-button (click)="cancel()" *ngIf="initData.teamName && initData.player1 && initData.player2">Cancel</button>
+  <button mat-raised-button (click)="save()" color="primary" [disabled]="!(team.teamName && team.player1 && team.player2)">Save</button>
 </mat-dialog-actions>

@@ -1,0 +1,3 @@
+<mat-chip-list #list>
+  <mat-chip *ngFor="let player of players" [selected]="selected==player" (click)="emit(player)">{{player}}</mat-chip>
+</mat-chip-list>

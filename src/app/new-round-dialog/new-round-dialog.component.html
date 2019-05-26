@@ -1,18 +1,16 @@
 <h2 mat-dialog-title align="center">New Round</h2>
 <mat-dialog-content align="center">
-  <mat-form-field>
-    <input matInput placeholder="Bidder" required [(ngModel)]="round.bidder">
-  </mat-form-field>
-  <app-point-selector [min]="1" [max]=10 [label]="'Bid Amount'" [points]="round.bidAmount"
+
+  <app-bidder-selector [players]="getPlayers()" (bidder)="round.bidder=$event;"></app-bidder-selector>
+
+  <app-point-selector [min]="5" [max]=10 [label]="'Bid Amount'" [points]="round.bidAmount"
     (points)="round.bidAmount=$event"></app-point-selector>
 
-  <app-point-selector [min]="-10" [max]=10 [label]="'Team 1 Points'" [points]="round.team1effect"
-    (points)="round.team1effect=$event"></app-point-selector>
-  <app-point-selector [min]="-10" [max]=10 [label]="'Team 2 Points'" [points]="round.team2effect"
-    (points)="round.team2effect=$event"></app-point-selector>
+  <app-point-selector [min]="0" [max]=10 [label]="'Bidder Points'" [points]="bidderPoints"
+    (points)="bidderPoints=$event"></app-point-selector>
 
 </mat-dialog-content>
 <mat-dialog-actions align="center">
   <button mat-raised-button (click)="cancel()">Cancel</button>
-  <button mat-raised-button (click)="save()" color="primary">Save</button>
+  <button mat-raised-button (click)="save()" color="primary" [disabled]="!round.bidder">Save</button>
 </mat-dialog-actions>

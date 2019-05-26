@@ -13,7 +13,7 @@ import { NewRoundDialogComponent } from './new-round-dialog/new-round-dialog.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewTeamDialogComponent } from './new-team-dialog/new-team-dialog.component';
 import { PointSelectorComponent } from './point-selector/point-selector.component';
-import { PointSelectorSliderComponent } from './point-selector-slider/point-selector-slider.component';
+import { BidderSelectorComponent } from './bidder-selector/bidder-selector.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { PointSelectorSliderComponent } from './point-selector-slider/point-sele
     NewRoundDialogComponent,
     NewTeamDialogComponent,
     PointSelectorComponent,
-    PointSelectorSliderComponent
+    BidderSelectorComponent
   ],
   imports: [
     BrowserModule,
