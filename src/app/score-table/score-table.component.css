@@ -13,3 +13,7 @@
 .mat-table {
     border: solid black;
 }
+
+.set {
+    background-color: red;
+}

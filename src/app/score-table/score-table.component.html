@@ -6,12 +6,12 @@
 
   <ng-container matColumnDef="bidder">
     <mat-header-cell *matHeaderCellDef>Bidder</mat-header-cell>
-    <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.bidder}} </mat-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)" class="{{set(round)?'mat-cell set':'mat-cell'}}"> {{round.bidder}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="bidAmount">
     <mat-header-cell *matHeaderCellDef>Bid Amount</mat-header-cell>
-    <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{round.bidAmount}} </mat-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)" class="{{set(round)?'mat-cell set':'mat-cell'}}"> {{round.bidAmount}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="team2col">
