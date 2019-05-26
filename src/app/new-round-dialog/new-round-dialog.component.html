@@ -1,24 +1,16 @@
 <h2 mat-dialog-title align="center">New Round</h2>
 <mat-dialog-content align="center">
-  <mat-card>
-    <mat-card-content style="display: grid; width: 100%; justify-items: center;">
-      <!-- <form [formGroup]="form"> -->
-        <mat-form-field>
-          <input matInput placeholder="Bidder" required [(ngModel)]="round.bidder">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Bid Amount" required [(ngModel)]="round.bidAmount" type="number" name="quantity">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Team 1 Points" required [(ngModel)]="round.team1effect" type="number" name="quantity">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Team 2 Points" required [(ngModel)]="round.team2effect" type="number" name="quantity" (keydown.enter)="save()">
-        </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Bidder" required [(ngModel)]="round.bidder">
+  </mat-form-field>
+  <app-point-selector [min]="1" [max]=10 [label]="'Bid Amount'" [points]="round.bidAmount"
+    (points)="round.bidAmount=$event"></app-point-selector>
 
-      <!-- </form> -->
-    </mat-card-content>
-  </mat-card>
+  <app-point-selector [min]="-10" [max]=10 [label]="'Team 1 Points'" [points]="round.team1effect"
+    (points)="round.team1effect=$event"></app-point-selector>
+  <app-point-selector [min]="-10" [max]=10 [label]="'Team 2 Points'" [points]="round.team2effect"
+    (points)="round.team2effect=$event"></app-point-selector>
+
 </mat-dialog-content>
 <mat-dialog-actions align="center">
   <button mat-raised-button (click)="cancel()">Cancel</button>

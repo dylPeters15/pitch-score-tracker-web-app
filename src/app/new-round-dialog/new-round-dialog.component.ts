@@ -19,6 +19,7 @@ export class NewRoundDialogComponent implements OnInit {
   }
 
   save(): void {
+    console.log(this.round);
     this.dialogRef.close(this.round);
   }
 

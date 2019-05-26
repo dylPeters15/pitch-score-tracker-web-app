@@ -1,0 +1,15 @@
+<!-- <mat-form-field>
+  <mat-icon matPrefix (click)="points=points-1;" *ngIf="points>min">exposure_minus_1</mat-icon>
+  <mat-icon matPrefix *ngIf="points<=min" style="color: gray;">exposure_plus_1</mat-icon> <input matInput
+    placeholder={{label}} [(ngModel)]="points" [disabled]="true" style="text-align: center; color: black;">
+  <mat-icon matSuffix (click)="points=points+1;" *ngIf="points<max">exposure_plus_1</mat-icon>
+  <mat-icon matSuffix *ngIf="points>=max" style="color: gray;">exposure_plus_1</mat-icon>
+</mat-form-field> -->
+
+<div>
+  <h3 style="text-align: left;">{{label}}: {{points}}</h3>
+  <span class="text-small">{{min}}</span>
+  <mat-slider #slider [disabled]="false" [invert]="false" [max]="max" [min]="min" [step]="1" [thumbLabel]="true"
+    [tickInterval]="1" [(ngModel)]="points" [vertical]="false" style="width: 85%;"></mat-slider>
+  <span class="text-small">{{max}}</span>
+</div>
