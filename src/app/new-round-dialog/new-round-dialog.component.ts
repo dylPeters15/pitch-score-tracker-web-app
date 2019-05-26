@@ -18,6 +18,10 @@ export class NewRoundDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPlayers() {
+    return ['a', 'b', 'c', 'd'];
+  }
+
   save(): void {
     console.log(this.round);
     this.dialogRef.close(this.round);

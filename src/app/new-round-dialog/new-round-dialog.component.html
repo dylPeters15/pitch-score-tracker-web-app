@@ -1,8 +1,12 @@
 <h2 mat-dialog-title align="center">New Round</h2>
 <mat-dialog-content align="center">
-  <mat-form-field>
+
+  <app-bidder-selector [players]="getPlayers()" (bidder)="round.bidder=$event;"></app-bidder-selector>
+
+  <!-- <mat-form-field>
     <input matInput placeholder="Bidder" required [(ngModel)]="round.bidder">
-  </mat-form-field>
+  </mat-form-field> -->
+
   <app-point-selector [min]="1" [max]=10 [label]="'Bid Amount'" [points]="round.bidAmount"
     (points)="round.bidAmount=$event"></app-point-selector>
 
