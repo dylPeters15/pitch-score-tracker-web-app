@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
-import { NewRoundDialogComponent } from '../new-round-dialog/new-round-dialog.component';
+import { NewRoundDialogComponent, NewRoundDialogCompnentInitData } from '../new-round-dialog/new-round-dialog.component';
 import { PitchGameModel } from '../game-model.service';
 import { ScoreTableComponent } from '../score-table/score-table.component';
 
@@ -21,16 +21,11 @@ export class ScoreTrackerContainerComponent implements OnInit {
   }
 
   plusClick() {
-    console.log("click");
-    console.log(this.pitchGameModel);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {};
+    dialogConfig.data = new NewRoundDialogCompnentInitData(this.pitchGameModel, -1);
     dialogConfig.width = "90%";
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
-      if (closeData) {
-        this.pitchGameModel.rounds.push(closeData);
-        this.appScoreTable.refreshData();
-      }
+      this.appScoreTable.refreshData();
     });
   }
 

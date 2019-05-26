@@ -7,12 +7,12 @@
     <input matInput placeholder="Bidder" required [(ngModel)]="round.bidder">
   </mat-form-field> -->
 
-  <app-point-selector [min]="1" [max]=10 [label]="'Bid Amount'" [points]="round.bidAmount"
+  <app-point-selector [min]="5" [max]=10 [label]="'Bid Amount'" [points]="round.bidAmount"
     (points)="round.bidAmount=$event"></app-point-selector>
 
-  <app-point-selector [min]="-10" [max]=10 [label]="'Team 1 Points'" [points]="round.team1effect"
+  <app-point-selector [min]="0" [max]=10 [label]="'Team 1 Points'" [points]="round.team1effect"
     (points)="round.team1effect=$event"></app-point-selector>
-  <app-point-selector [min]="-10" [max]=10 [label]="'Team 2 Points'" [points]="round.team2effect"
+  <app-point-selector [min]="0" [max]=10 [label]="'Team 2 Points'" [points]="round.team2effect"
     (points)="round.team2effect=$event"></app-point-selector>
 
 </mat-dialog-content>

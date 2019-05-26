@@ -23,13 +23,6 @@ export class ScoreTableComponent implements OnInit {
       await this.editTeam2();
       thisobject.refreshData();
     })
-    // var thisobject = this;
-    //  this.editTeam1().then(() => {
-    //   this.editTeam2().then(() => {
-    //     thisobject.dataSource = new MatTableDataSource(this.scoreTableData.rounds);
-    //     console.log(this.dataSource);
-    //   });
-    //  }); 
   }
 
   ngOnInit() {
@@ -37,13 +30,6 @@ export class ScoreTableComponent implements OnInit {
 
   refreshData(): void {
     this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
-  }
-
-  appendRound(round: Round): void {
-    if (round && round.team1effect != undefined) {
-      this.pitchGameModel.rounds.push(round);
-      this.refreshData();
-    }
   }
 
   async editTeam1(): Promise<void> {
@@ -72,17 +58,9 @@ export class ScoreTableComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = round;
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
-      if (closeData) {
-        console.log(this.pitchGameModel.rounds);
-        this.pitchGameModel.rounds.splice(this.pitchGameModel.rounds.indexOf(round), 1, closeData);
-        console.log(this.pitchGameModel.rounds);
-        console.log(closeData);
-        this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
-      }
+      this.refreshData();
     });
     console.log(round);
   }
-
-  
 
 }
