@@ -7,7 +7,7 @@
 </mat-form-field> -->
 
 <div>
-  <h3 style="text-align: left;">{{label}}</h3>
+  <h3 style="text-align: left;">{{label}}: {{points}}</h3>
   <span class="text-small">{{min}}</span>
   <mat-slider #slider [disabled]="false" [invert]="false" [max]="max" [min]="min" [step]="1" [thumbLabel]="true"
     [tickInterval]="1" [(ngModel)]="points" [vertical]="false" style="width: 85%;"></mat-slider>

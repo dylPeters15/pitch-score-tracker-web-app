@@ -23,7 +23,6 @@ export class PointSelectorComponent implements OnInit {
 
     console.log(this.slider);
     this.slider.valueChange.subscribe(() => {
-      console.log(this.slider.value);
       this.change.emit(this.slider.value as number);
     });
   }
