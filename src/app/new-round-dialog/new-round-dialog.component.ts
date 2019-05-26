@@ -19,6 +19,7 @@ export class NewRoundDialogCompnentInitData {
 export class NewRoundDialogComponent implements OnInit {
   round: Round = new Round();
   bidderPoints: number = 5;
+  title: string = "New Round";
 
   constructor(private dialogRef: MatDialogRef<NewRoundDialogComponent>, @Inject(MAT_DIALOG_DATA) public initData: NewRoundDialogCompnentInitData) {
     if (this.validRoundNum()) {
@@ -26,6 +27,7 @@ export class NewRoundDialogComponent implements OnInit {
         initData.pitchGameModel.rounds[initData.roundNumToEdit].team2effect, 
         initData.pitchGameModel.rounds[initData.roundNumToEdit].bidder, 
         initData.pitchGameModel.rounds[initData.roundNumToEdit].bidAmount);
+      this.title = "Edit Round";
     }
   }
 

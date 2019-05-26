@@ -13,12 +13,15 @@ export class ScoreTableComponent implements OnInit {
 
   @Input() pitchGameModel: PitchGameModel = new PitchGameModel();
   dataSource: MatTableDataSource<Round> = new MatTableDataSource(this.pitchGameModel.rounds);
-  columnsToDisplay = ['team1col', 'bidder', 'bidAmount', 'team2col'];
+  columnsToDisplay: string[] = ['team1col', 'bidder', 'bidAmount', 'team2col'];
+  fillerRows: any[] = [];
+  fillerRowsLength: number = 20;
 
   constructor(private dialog: MatDialog) {
     var thisobject = this;
     new Promise(async (resolve, reject) => {
       console.log("Pitch game model: ", this.pitchGameModel);
+      thisobject.refreshData();
       await this.editTeam1(true);
       await this.editTeam2(true);
       thisobject.refreshData();
@@ -29,6 +32,10 @@ export class ScoreTableComponent implements OnInit {
   }
 
   refreshData(): void {
+    this.fillerRows = [];
+    for (var i = this.pitchGameModel.rounds.length; i < this.fillerRowsLength; i++) {
+      this.fillerRows.push({});
+    }
     this.dataSource = new MatTableDataSource(this.pitchGameModel.rounds);
   }
 
@@ -37,6 +44,7 @@ export class ScoreTableComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team1;
     dialogConfig.disableClose = disableClose;
+    dialogConfig.width = "90%";
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team1 = closeData;
@@ -49,6 +57,7 @@ export class ScoreTableComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.pitchGameModel.team2;
     dialogConfig.disableClose = disableClose;
+    dialogConfig.width = "90%";
     var closeData = await this.dialog.open(NewTeamDialogComponent, dialogConfig).afterClosed().toPromise();
     if (closeData) {
       this.pitchGameModel.team2 = closeData;
@@ -57,8 +66,10 @@ export class ScoreTableComponent implements OnInit {
   }
 
   editRound(round: Round): void {
+    console.log(this.pitchGameModel.rounds.indexOf(round));
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = new NewRoundDialogCompnentInitData(this.pitchGameModel, this.pitchGameModel.rounds.indexOf(round));
+    dialogConfig.width = "90%";
     this.dialog.open(NewRoundDialogComponent, dialogConfig).afterClosed().subscribe(closeData => {
       this.refreshData();
     });

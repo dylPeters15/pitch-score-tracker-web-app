@@ -1,24 +1,49 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-table id=mainTable [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
   <ng-container matColumnDef="team1col">
-    <mat-header-cell *matHeaderCellDef (click)="editTeam1()">Team 1 - {{pitchGameModel.team1.teamName}}: {{pitchGameModel.team1.player1}} & {{pitchGameModel.team1.player2}}</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef (click)="editTeam1()">Team 1 - {{pitchGameModel.team1.teamName}}:
+      {{pitchGameModel.team1.player1}} & {{pitchGameModel.team1.player2}}</mat-header-cell>
     <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{team1TotalThroughRound(round)}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="bidder">
     <mat-header-cell *matHeaderCellDef>Bidder</mat-header-cell>
-    <mat-cell *matCellDef="let round" (click)="editRound(round)" class="{{set(round)?'mat-cell set':'mat-cell'}}"> {{round.bidder}} </mat-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)" class="{{set(round)?'mat-cell set':'mat-cell'}}">
+      {{round.bidder}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="bidAmount">
     <mat-header-cell *matHeaderCellDef>Bid Amount</mat-header-cell>
-    <mat-cell *matCellDef="let round" (click)="editRound(round)" class="{{set(round)?'mat-cell set':'mat-cell'}}"> {{round.bidAmount}} </mat-cell>
+    <mat-cell *matCellDef="let round" (click)="editRound(round)" class="{{set(round)?'mat-cell set':'mat-cell'}}">
+      {{round.bidAmount}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="team2col">
-    <mat-header-cell *matHeaderCellDef (click)="editTeam2()">Team 2 - {{pitchGameModel.team2.teamName}}: {{pitchGameModel.team2.player1}} & {{pitchGameModel.team2.player2}}</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef (click)="editTeam2()">Team 2 - {{pitchGameModel.team2.teamName}}:
+      {{pitchGameModel.team2.player1}} & {{pitchGameModel.team2.player2}}</mat-header-cell>
     <mat-cell *matCellDef="let round" (click)="editRound(round)"> {{team2TotalThroughRound(round)}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="columnsToDisplay" style="background-color: lightgrey;"></mat-header-row>
+  <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+</mat-table>
+
+
+<mat-table id=fillerTable [dataSource]="fillerRows" class="mat-elevation-z8" multiTemplateDataRows>
+  <ng-container matColumnDef="team1col">
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="bidder">
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="bidAmount">
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="team2col">
+    <mat-cell *matCellDef="let round" (click)="editRound(round)"></mat-cell>
+  </ng-container>
+
   <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
 </mat-table>
